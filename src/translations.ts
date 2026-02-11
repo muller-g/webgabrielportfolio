@@ -76,12 +76,12 @@ export const translations = {
           description: 'Um sistema para registrar informalmente críticas de filmes. Utilizando NodeJS para o backend e React para o frontend.'
         },
         {
-          title: 'Chatbot WhatsApp Automatizado',
-          description: 'Bot inteligente para WhatsApp com integração de IA para atendimento ao cliente. Suporte a múltiplas linguagens e integração com CRM.'
+          title: 'Caps Store',
+          description: 'Site institucional para exibir os produtos da empresa, com formulário para disparo de e-mail com PHP. Foi o meu primeiro site desenvolvido.'
         },
         {
-          title: 'E-commerce com Sistema de Pagamento',
-          description: 'Plataforma completa de e-commerce com gateway de pagamento integrado, gestão de pedidos e sistema de afiliados.'
+          title: 'Integração Shopify e ERP Microvix',
+          description: 'Integração entre a loja virtual Shopify e o ERP Microvix, para sincronização de produtos, pedidos e clientes de forma automática e em tempo real.'
         },
         {
           title: 'CRM Empresarial',

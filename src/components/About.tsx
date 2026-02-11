@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Award, Users, Calendar, Code, Zap, Target } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 
 const About: React.FC = () => {
   const t = useTranslation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const stats = [
     {
@@ -165,7 +175,7 @@ const About: React.FC = () => {
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: item.side === 'left' ? -50 : 50 }}
+                  initial={{ opacity: 0, x: isMobile ? 0 : (item.side === 'left' ? -50 : 50) }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}

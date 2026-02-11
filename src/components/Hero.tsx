@@ -1,10 +1,21 @@
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../hooks/useTranslation';
+
 
 const Hero: React.FC = () => {
   const t = useTranslation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.querySelector(sectionId);
@@ -18,10 +29,10 @@ const Hero: React.FC = () => {
       <div className="container-max section-padding">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16 lg:mb-0">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center lg:text-left order-2 lg:order-1"
+            className="text-center lg:text-left order-2 lg:order-1 overflow-x-hidden"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -110,20 +121,16 @@ const Hero: React.FC = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative order-1 lg:order-2"
           >
-            <div className="relative w-full h-80 sm:h-96 lg:h-[500px]">
+            <div className="relative w-full h-80 sm:h-96 lg:h-[500px] max-[599px]:h-[400px]">
               <div className="absolute inset-0 bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900 dark:to-primary-800 rounded-3xl transform rotate-3"></div>
               
               <div className="relative bg-white dark:bg-dark-800 rounded-3xl shadow-2xl p-8 h-full flex flex-col justify-center items-center">
-                <div className="w-32 h-32 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center mb-6">
-                  <span className="text-4xl font-bold text-white">
-                    <img src="/assets/eu.jpeg" alt="Gabriel" className="rounded-full object-cover w-full h-full" />
-                  </span>
-                </div>
+                <div className="img-gb-container"></div>
                 
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                   {t.hero.name}

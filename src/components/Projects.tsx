@@ -22,57 +22,24 @@ const Projects: React.FC = () => {
       id: 2,
       title: t.projects.projects[1].title,
       description: t.projects.projects[1].description,
-      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop',
-      technologies: ['Node.js', 'WhatsApp API', 'OpenAI', 'MongoDB'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
+      image: 'https://i.imgur.com/KpkQY1c.png',
+      technologies: ['React', 'PHP'],
+      github: '#',
+      demo: 'https://www.capsstore.com.br/',
       featured: false,
-      year: '2024'
+      year: '2020'
     },
     {
       id: 3,
       title: t.projects.projects[2].title,
       description: t.projects.projects[2].description,
-      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop',
-      technologies: ['Next.js', 'Stripe', 'PostgreSQL', 'Docker'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
+      image: 'https://i.imgur.com/jSiCAay.jpeg',
+      technologies: ['Nodejs'],
+      github: '#',
+      demo: '#',
       featured: false,
       year: '2023'
     },
-    {
-      id: 4,
-      title: t.projects.projects[3].title,
-      description: t.projects.projects[3].description,
-      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop',
-      technologies: ['Vue.js', 'NestJS', 'MySQL', 'Redis'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      featured: false,
-      year: '2023'
-    },
-    {
-      id: 5,
-      title: t.projects.projects[4].title,
-      description: t.projects.projects[4].description,
-      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop',
-      technologies: ['Node.js', 'Twilio', 'Bull Queue', 'MongoDB'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      featured: false,
-      year: '2023'
-    },
-    {
-      id: 6,
-      title: t.projects.projects[5].title,
-      description: t.projects.projects[5].description,
-      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop',
-      technologies: ['React', 'D3.js', 'Express.js', 'PostgreSQL'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      featured: false,
-      year: '2022'
-    }
   ];
 
   return (
@@ -163,24 +130,32 @@ const Projects: React.FC = () => {
                 </div>
 
                 <div className="flex space-x-4">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center px-4 py-2 bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-dark-600 transition-colors duration-200"
-                  >
-                    <Github className="w-4 h-4 mr-2" />
-                    {t.projects.viewCode}
-                  </a>
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    {t.projects.viewProject}
-                  </a>
+                  {
+                    project.github !== '#' && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center px-4 py-2 bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-dark-600 transition-colors duration-200"
+                      >
+                        <Github className="w-4 h-4 mr-2" />
+                        {t.projects.viewCode}
+                      </a>
+                    )
+                  }
+                  {
+                    project.demo !== '#' && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200"
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        {t.projects.viewProject}
+                      </a>
+                    )
+                  }
                 </div>
               </div>
             </motion.div>
